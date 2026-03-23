@@ -10,6 +10,7 @@ import java.io.*;
  * @author Obciana
  */
 public class MileStone2 {
+    // file handler
     static String employeeFile = "Copy of MotorPH_Employee Data.csv";
     static String attendanceFile = "Attendance Record.csv";
     static String sssFile = "SSS.txt";
@@ -18,7 +19,11 @@ public class MileStone2 {
     static String PhilFile = "Philhealth.txt";
 
     
-//    This method are part of loggin 
+// This method is part of the login process.
+// Features include:
+// It allows the user to enter letters in any case (uppercase or lowercase).
+// For example, inputs like "Employee", "EMPLOYEE", or "eMpLoYeE" will still be accepted
+// as long as the spelling is correct.
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -63,7 +68,7 @@ public class MileStone2 {
             int choice = scanner.nextInt();
 
             if (choice == 1) {
-
+        
                 System.out.println("1. One Employee");
                 System.out.println("2. All Employees");
 
@@ -84,7 +89,9 @@ public class MileStone2 {
         scanner.close();
     }
 
-// This Method is process of payroll and the filereader of the data of logging in user like payroll staff and employee
+// This method computes the payroll of an employee by getting their data
+// checking their worked hours, calculating their salary and deductions
+// and then showing the final payroll details
     public static void processpayroll(String employeenum) {
 
         try (BufferedReader employeefilereader = new BufferedReader(new FileReader(employeeFile))) {
@@ -189,7 +196,9 @@ public class MileStone2 {
     }
     
 
-    // if payroll staff choose all employee this method will be show
+    // This method is used when the payroll staff chooses to view all employees.
+    // This method reads all employee records from the file
+    // and processes the payroll of each employee one by one.
     public static void allemployee() {
 
         try (BufferedReader employeereader = new BufferedReader(new FileReader(employeeFile))) {
@@ -208,7 +217,8 @@ public class MileStone2 {
         }
     }
 
-    // This method are hours computation
+    // Computes work hours by converting login and logout time into minutes,
+    // adjusting to work schedule (8 AM–5 PM), and returning total hours worked.
     public static double computeHours(String login, String logout) {
 
         String[] in = login.split(":");
@@ -230,15 +240,16 @@ public class MileStone2 {
         return workhours;
     }
 
-//   This method are filehandler used to calculate of deduction of SSS
+// Reads SSS data from a file, finds the correct salary range,
+// and returns the corresponding SSS deduction.
     public static double SSScomputarion(double salary) {
     try (BufferedReader SSSfilereader = new BufferedReader(new FileReader(sssFile))) {
 
         String recordofsss;
-        SSSfilereader.readLine(); // skip header
+        SSSfilereader.readLine();
 
         while ((recordofsss = SSSfilereader.readLine()) != null) {
-//   gamit pag debug         System.out.println("DEBUG LINE: " + line); //add kolang
+
             String[] sssdata = recordofsss.split(",");
 
             double minumsalary = Double.parseDouble(sssdata[0]);
@@ -246,7 +257,6 @@ public class MileStone2 {
             double sssdeduction = Double.parseDouble(sssdata[2]);
 
             if (salary >= minumsalary && salary <= maximumsalary) {
-//  gamit pang debug              System.out.println("MATCHED SSS: " + contribution);// add kolang kasama ng pang debug
                 return sssdeduction;
             }
         }
@@ -258,12 +268,13 @@ public class MileStone2 {
     return 0;
 } 
 
-    //   This method are filehandler used to calculate of deduction of philhealth
+    // Reads PhilHealth data from a file, calculates the contribution based on salary,
+   // applies minimum and maximum limits, and returns the employee's share.
       public static double computephilhealth(double salary) {
       try (BufferedReader philhealthfilereader = new BufferedReader(new FileReader(PhilFile))) {
 
         String philhealthrecord;
-        philhealthfilereader.readLine(); // skip header
+        philhealthfilereader.readLine(); 
 
         while ((philhealthrecord = philhealthfilereader.readLine()) != null) {
 
@@ -282,7 +293,7 @@ public class MileStone2 {
                 if (premium < minimumpercentage) premium = minimumpercentage;
                 if (premium > maximumpercentage) premium = maximumpercentage;
 
-                return premium / 2; // employee share
+                return premium / 2; 
             }
         }
 
@@ -292,12 +303,13 @@ public class MileStone2 {
 
     return 0;
 }
-// This method are filehandler used to calculate of deduction of pag-ibig
+// Reads Pag-IBIG data from a file, calculates the contribution based on salary,
+// applies the maximum limit, and returns the final deduction.
   public static double computepagibig(double salary) {
   try (BufferedReader pagibigfilereader = new BufferedReader(new FileReader(pagibigFile))) {
 
         String recordpagibig;
-        pagibigfilereader.readLine(); // skip header
+        pagibigfilereader.readLine(); 
 
         while ((recordpagibig = pagibigfilereader.readLine()) != null) {
             String[] pagibigdata = recordpagibig.split(",");
@@ -325,13 +337,14 @@ public class MileStone2 {
     return 0;
 }
  
-// This method are filehandler used to calculate of deduction of tax
+// Reads tax data from a file, finds the correct salary range
+// and calculates the tax using the base tax and applicable rate.
   public static double computeTax(double salary) {
 
     try (BufferedReader taxreader = new BufferedReader(new FileReader(taxFile))) {
 
         String taxrecord;
-        taxreader.readLine(); // skip header
+        taxreader.readLine();
 
         while ((taxrecord = taxreader.readLine()) != null) {
 
