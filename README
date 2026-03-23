@@ -2,7 +2,8 @@ Team Details:
 Group 25 
 Thomas Adriane T. Obciana
 
-Program Details:
+Program Details: Reason of using text to file is to allow the handfile reader to read the file so i converted it to a tex
+
 This system is a Java-based Payroll System that reads employee data and attendance records from files. 
 
 The user logs in as either Employee or Payroll Staff.
