@@ -1,0 +1,23 @@
+Team Details: 
+Group 25 
+Thomas Adriane T. Obciana
+
+Program Details:
+This system is a Java-based Payroll System that reads employee data and attendance records from files. 
+
+The user logs in as either Employee or Payroll Staff.
+
+Employee can: Enter Employee Number to view salary details
+
+Payroll Staff can: Process payroll for one employee, Process payroll for all employees
+
+The system computes:
+Total hours worked
+Gross salary
+Deductions (SSS, PhilHealth, Pag-IBIG, Tax)
+Net salary
+
+All data is read using FileReader and BufferedReader.
+
+Project Plan Link
+-Include the link to your project plan.
