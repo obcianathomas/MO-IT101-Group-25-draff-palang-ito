@@ -1,19 +1,30 @@
 Team Details: 
 Group 25 
 Thomas Adriane T. Obciana
+Aaliyah Floreselle M. Jacinto
 
-Program Details: Reason of using text to file is to allow the handfile reader to read the file so i converted it to a tex
-This system is a Java-based Payroll System that reads employee data and attendance records from files. 
-The user logs in as either Employee or Payroll Staff.
-Employee can: Enter Employee Number to view salary details
-Payroll Staff can: Process payroll for one employee, Process payroll for all employees
+Program Overview
+This project is a Java-based Payroll System that reads employee information and attendance records from the text files.
+The main goal is to automate payroll computation while using file-based storage that is compatible with a handfile
+reader. Employee data is converted and stored in a text format so it can be easily read and processed by the system.
 
-The system computes:
+User Roles and Features
+Employees can:
+Log in using their Employee Number
+View their salary details, including hours worked, gross salary, deductions, and net salary
+Payroll Staff can:
+Process payroll for a single employee
+Process payroll for all employees
+
+Payroll Computation
+For each employee, the system computes:
 Total hours worked
 Gross salary
-Deductions (SSS, PhilHealth, Pag-IBIG, Tax)
+Deductions: SSS, PhilHealth, Pag-IBIG, Tax
 Net salary
 
-All data is read using FileReader and BufferedReader.
+File Handling
+All data is read from text files using FileReader and BufferedReader. This approach allows the system to work with
+external files generated or accessed by a handfile reader.
 
 Project Plan Link: https://docs.google.com/spreadsheets/d/1ok5AY42EEzDMP0uvng3JduJVRAwuuMixX1bGT6TZ428/edit?gid=2134013708#gid=2134013708
